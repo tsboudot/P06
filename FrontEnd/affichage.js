@@ -1,4 +1,19 @@
+import { genererWorks } from './works.js';
+import { genererFiltres, filtrerTout, filtrerObjets, filtrerAppartements, filtrerHotelsEtRestaurants } from './filters.js';
+
 let works;
+
+fetch('http://localhost:5678/api/works')
+  .then(response => response.json())
+  .then(data => {
+    works = data;
+    genererWorks(works);
+    genererFiltres();
+  })
+  .catch(error => console.error(error));
+
+/*
+    let works;
 
 function genererWorks(worksData = works) {
   const portfolioSection = document.querySelector('#portfolio');
@@ -83,3 +98,4 @@ filtrerHotelsEtRestaurants.addEventListener("click", function() {
   });
   genererWorks(worksFiltre);
 });
+*/
